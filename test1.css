@@ -1,0 +1,21 @@
+h1 {
+    font-family: 'Inter', sans-serif; 
+}
+
+.fake-image {
+    width: 100px; 
+    height: 100px; 
+    background-image: url("girl_fake.png"); 
+    background-size: cover; 
+    border: none;
+    cursor: pointer; 
+}
+
+.real-image{
+    width: 100px; 
+    height: 100px; 
+    background-image: url("girl_real.png"); 
+    background-size: cover; 
+    border: none;
+    cursor: pointer; 
+}
