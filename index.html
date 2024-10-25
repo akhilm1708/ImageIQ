@@ -8,10 +8,53 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet"> 
 </head>
 <body>
-    <h1>
-        Real or AI?
-    </h1>
-        <button id="fake-image" class="fake-image"></button> 
-        <button id="real-image" class="real-image"></button>
+    <div class="header">
+        <h1>AI OR Real?</h1>
+    </div>
+    <div class="container">
+        <label class="option">
+            <input type="radio" name="option" value="1">
+            <img src="girl_fake.png" alt="Option 1">
+            <span class="checkbox"></span>
+        </label>
+        <label class="option">
+            <input type="radio" name="option" value="2">
+            <img src="girl_real.png" alt="Option 2">
+            <span class="checkbox"></span>
+        </label>
+    </div>
+    <div class="button-container">
+        <button type="button" class="next-button" onclick="checkSelection()">Next</button>
+        <button type="button" class="reset-button" onclick="resetSelection()">Reset</button>
+    </div>
+    <div id="notification" class="notification"></div>
+
+    <script>
+        function checkSelection() {
+            const selectedOption = document.querySelector('input[name="option"]:checked');
+            const notification = document.getElementById('notification');
+
+            if (selectedOption) {
+                if (selectedOption.value === '1') {
+                    notification.textContent = 'Excellent! 1 out of 1';
+                    notification.style.color = 'green';
+                } else {
+                    notification.textContent = 'Try again... 0 out of 1';
+                    notification.style.color = 'red';
+                }
+            } else {
+                notification.textContent = 'Please select an option!';
+                notification.style.color = 'orange';
+            }
+        }
+
+        function resetSelection() {
+            const notification = document.getElementById('notification');
+            notification.textContent = ''; // Clear the notification
+            document.querySelectorAll('input[name="option"]').forEach(option => {
+                option.checked = false; // Uncheck all radio buttons
+            });
+        }
+    </script>
 </body>
 </html>
