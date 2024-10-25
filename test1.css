@@ -1,0 +1,98 @@
+body {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f5f5f5; /* Optional: change background color */
+}
+
+.header {
+    margin-bottom: 20px; /* Space between the header and options */
+}
+
+h1 {
+    font-family: 'Inter', sans-serif;
+}
+
+.container {
+    display: flex;
+    gap: 20px; /* Space between boxes */
+    margin-bottom: 20px; /* Space between options and buttons */
+}
+
+.option {
+    position: relative; /* Position relative for absolute checkbox */
+    cursor: pointer;
+}
+
+.option img {
+    width: 200px; /* Set a fixed width for images */
+    height: 200px; /* Set a fixed height for images */
+    border-radius: 10px; /* Match corners with the box */
+    object-fit: cover; /* Ensure the image covers the box */
+}
+
+input[type="radio"] {
+    display: none; /* Hide the default radio button */
+}
+
+.checkbox {
+    position: absolute;
+    top: 10px; /* Adjust position of the checkbox */
+    left: 10px; /* Adjust position of the checkbox */
+    width: 20px; /* Checkbox width */
+    height: 20px; /* Checkbox height */
+    border-radius: 50%; /* Make it circular */
+    border: 2px solid #888; /* Default border color */
+    background-color: transparent; /* Transparent by default */
+    transition: background-color 0.3s, border-color 0.3s; /* Transition effects */
+}
+
+/* Style for checked state */
+input[type="radio"]:checked + img + .checkbox {
+    background-color: #007bff; /* Blue background when checked */
+    border-color: #007bff; /* Change border color to blue */
+}
+
+.button-container {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+}
+
+.next-button {
+    padding: 10px 20px; /* Button padding */
+    background-color: #007bff; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s; /* Transition for hover effect */
+}
+
+.next-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.reset-button {
+    padding: 10px 20px; /* Button padding */
+    background-color: grey; /* Grey background color */
+    color: white; /* White text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s; /* Transition for hover effect */
+}
+
+.reset-button:hover {
+    background-color: darkgrey; /* Darker grey on hover */
+}
+
+.notification {
+    margin-top: 20px; /* Space above the notification */
+    font-size: 18px; /* Font size for notification */
+    text-align: center; /* Center the notification text */
+}
