@@ -11,18 +11,76 @@
     <div class="header">
         <h1>Find the AI!</h1>
     </div>
+
     <div class="container">
         <label class="option">
-            <input type="radio" name="option" value="1">
-            <img src="girl_fake.png" alt="Option 1">
+            <input type="radio" name="option1" value="1">
+            <img src="images/girl_fake.png" alt="Option 1">
             <span class="checkbox"></span>
         </label>
         <label class="option">
-            <input type="radio" name="option" value="2">
-            <img src="girl_real.png" alt="Option 2">
+            <input type="radio" name="option1" value="2">
+            <img src="images/girl_real.png" alt="Option 2">
             <span class="checkbox"></span>
         </label>
     </div>
+
+    <!-- Set 2 -->
+    <div class="container">
+        <label class="option">
+            <input type="radio" name="option2" value="1">
+            <img src="images/flower_real.png" alt="Option 3">
+            <span class="checkbox"></span>
+        </label>
+        <label class="option">
+            <input type="radio" name="option2" value="2">
+            <img src="images/flower_fake.png" alt="Option 4">
+            <span class="checkbox"></span>
+        </label>
+    </div>
+
+    <!-- Set 3 -->
+    <div class="container">
+        <label class="option">
+            <input type="radio" name="option3" value="1">
+            <img src="images/sea_real.png" alt="Option 5">
+            <span class="checkbox"></span>
+        </label>
+        <label class="option">
+            <input type="radio" name="option3" value="2">
+            <img src="images/sea_fake.png" alt="Option 6">
+            <span class="checkbox"></span>
+        </label>
+    </div>
+
+    <!-- Set 4 -->
+    <div class="container">
+        <label class="option">
+            <input type="radio" name="option4" value="1">
+            <img src="images/berdfake.png" alt="Option 7">
+            <span class="checkbox"></span>
+        </label>
+        <label class="option">
+            <input type="radio" name="option4" value="2">
+            <img src="images/berd_real.png" alt="Option 8">
+            <span class="checkbox"></span>
+        </label>
+    </div>
+
+    <!-- Set 5 -->
+    <div class="container">
+        <label class="option">
+            <input type="radio" name="option5" value="1">
+            <img src="images/land_fake.png" alt="Option 9">
+            <span class="checkbox"></span>
+        </label>
+        <label class="option">
+            <input type="radio" name="option5" value="2">
+            <img src="images/land_real.png" alt="Option 10">
+            <span class="checkbox"></span>
+        </label>
+    </div>
+
     <div class="button-container">
         <button type="button" class="next-button" onclick="checkSelection()">Next</button>
         <button type="button" class="reset-button" onclick="resetSelection()">Reset</button>
@@ -31,30 +89,33 @@
 
     <script>
         function checkSelection() {
-            const selectedOption = document.querySelector('input[name="option"]:checked');
-            const notification = document.getElementById('notification');
+    const notification = document.getElementById('notification');
+    let score = 0;
 
-            if (selectedOption) {
-                if (selectedOption.value === '1') {
-                    notification.textContent = 'Excellent! 1 out of 1';
-                    notification.style.color = 'green';
-                } else {
-                    notification.textContent = 'Try again... 0 out of 1';
-                    notification.style.color = 'red';
-                }
-            } else {
-                notification.textContent = 'Please select an option!';
-                notification.style.color = 'orange';
+    // Manual answer key... 1 for fake, 2 for real
+    const correctAnswers = {
+        option1: 1, // Set 1: fake
+        option2: 2, // Set 2: fake
+        option3: 2, // Set 3: fake
+        option4: 1, // Set 4: fake
+        option5: 1  // Set 5: fake
+    };
+
+    // Check each set of options
+    for (let i = 1; i <= 5; i++) {
+        const selectedOption = document.querySelector(`input[name="option${i}"]:checked`);
+        if (selectedOption) {
+            // compare selected value with correct answer
+            if (parseInt(selectedOption.value) === correctAnswers[`option${i}`]) {
+                score++;
             }
         }
+    }
 
-        function resetSelection() {
-            const notification = document.getElementById('notification');
-            notification.textContent = ''; // Clear the notification
-            document.querySelectorAll('input[name="option"]').forEach(option => {
-                option.checked = false; // Uncheck all radio buttons
-            });
-        }
+    notification.textContent = `You scored ${score} out of 5!`;
+    notification.style.color = score === 5 ? 'green' : 'red';
+}
+
     </script>
 </body>
 </html>
