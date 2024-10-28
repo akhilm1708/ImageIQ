@@ -24,7 +24,6 @@
             <span class="checkbox"></span>
         </label>
     </div>
-
     <div class="container">
         <label class="option">
             <input type="radio" name="option2" value="1">
@@ -49,7 +48,6 @@
             <span class="checkbox"></span>
         </label>
     </div>
-
     <div class="container">
         <label class="option">
             <input type="radio" name="option4" value="1">
@@ -74,17 +72,17 @@
             <span class="checkbox"></span>
         </label>
     </div>
+
     <div class="button-container">
         <button type="button" class="next-button" onclick="checkSelection()">Next</button>
         <button type="button" class="reset-button" onclick="resetSelection()">Reset</button>
     </div>
-    <div id="notification" class="notification"></div>
+
+    <div id="message" style="color: red; margin-top: 20px;"></div>
 
     <script>
-    function checkSelection() {
-            const notification = document.getElementById('notification');
-            let score=0;
-
+        function checkSelection() {
+            let score = 0;
             const correctAnswers = {
                 option1: 1,
                 option2: 2,
@@ -93,26 +91,35 @@
                 option5: 1
             };
 
-            for (let i =1; i <= 5; i++) {
-                const selectedOption = document.querySelector(`input[name="option${i}"]:checked`);
-                if (selectedOption) {
+            let allSelected= true;
+            const messageDiv = document.getElementById('message');
+            messageDiv.innerHTML = ''; // clears th previous messages
+
+            for (let i = 1; i <= 5; i++) {
+                const selectedOption= document.querySelector(`input[name="option${i}"]:checked`);
+                if (!selectedOption) {
+                    allSelected = false;
+                } else {
                     if (parseInt(selectedOption.value) === correctAnswers[`option${i}`]) {
                         score++;
                     }
                 }
             }
 
-        notification.textContent = `You scored ${score} out of 5`;
-        notification.style.color = score === 5 ? 'green' : 'red';
+            if (!allSelected) {
+            messageDiv.innerHTML= 'Please select an option for each question.';
+                return;
+            }
+
+            window.location.href= `score.html?score=${score}`;
         }
 
         function resetSelection() {
-            const radios =document.querySelectorAll('input[type ="radio"]');
+            const radios = document.querySelectorAll('input[type="radio"]');
             radios.forEach(radio => {
-                radio.checked= false;
+                radio.checked = false;
             });
-            const notification = document.getElementById('notification');
-            notification.textContent = '';
+        document.getElementById('message').innerHTML = ''; // clear message on reset
         }
     </script>
 </body>

@@ -1,0 +1,42 @@
+body {
+    background-color: black;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    margin-top: 50px;
+}
+#result {
+    margin: 20px;
+}
+
+h1 {
+    font-size: 5em;
+    color: transparent;
+    background: linear-gradient(to right, red, yellow);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+h2 {
+    color: lightcyan;
+    font-size: 2em;
+}
+p {
+    font-size: 1.5em;
+    color: whitesmoke;
+    margin-top: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
