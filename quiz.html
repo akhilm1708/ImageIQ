@@ -25,7 +25,6 @@
         </label>
     </div>
 
-    <!-- Set 2 -->
     <div class="container">
         <label class="option">
             <input type="radio" name="option2" value="1">
@@ -38,8 +37,6 @@
             <span class="checkbox"></span>
         </label>
     </div>
-
-    <!-- Set 3 -->
     <div class="container">
         <label class="option">
             <input type="radio" name="option3" value="1">
@@ -53,7 +50,6 @@
         </label>
     </div>
 
-    <!-- Set 4 -->
     <div class="container">
         <label class="option">
             <input type="radio" name="option4" value="1">
@@ -66,8 +62,6 @@
             <span class="checkbox"></span>
         </label>
     </div>
-
-    <!-- Set 5 -->
     <div class="container">
         <label class="option">
             <input type="radio" name="option5" value="1">
@@ -80,7 +74,6 @@
             <span class="checkbox"></span>
         </label>
     </div>
-
     <div class="button-container">
         <button type="button" class="next-button" onclick="checkSelection()">Next</button>
         <button type="button" class="reset-button" onclick="resetSelection()">Reset</button>
@@ -88,34 +81,39 @@
     <div id="notification" class="notification"></div>
 
     <script>
-        function checkSelection() {
-    const notification = document.getElementById('notification');
-    let score = 0;
+    function checkSelection() {
+            const notification = document.getElementById('notification');
+            let score=0;
 
-    // Manual answer key... 1 for fake, 2 for real
-    const correctAnswers = {
-        option1: 1, // Set 1: fake
-        option2: 2, // Set 2: fake
-        option3: 2, // Set 3: fake
-        option4: 1, // Set 4: fake
-        option5: 1  // Set 5: fake
-    };
+            const correctAnswers = {
+                option1: 1,
+                option2: 2,
+                option3: 2,
+                option4: 1,
+                option5: 1
+            };
 
-    // Check each set of options
-    for (let i = 1; i <= 5; i++) {
-        const selectedOption = document.querySelector(`input[name="option${i}"]:checked`);
-        if (selectedOption) {
-            // compare selected value with correct answer
-            if (parseInt(selectedOption.value) === correctAnswers[`option${i}`]) {
-                score++;
+            for (let i =1; i <= 5; i++) {
+                const selectedOption = document.querySelector(`input[name="option${i}"]:checked`);
+                if (selectedOption) {
+                    if (parseInt(selectedOption.value) === correctAnswers[`option${i}`]) {
+                        score++;
+                    }
+                }
             }
+
+        notification.textContent = `You scored ${score} out of 5`;
+        notification.style.color = score === 5 ? 'green' : 'red';
         }
-    }
 
-    notification.textContent = `You scored ${score} out of 5!`;
-    notification.style.color = score === 5 ? 'green' : 'red';
-}
-
+        function resetSelection() {
+            const radios =document.querySelectorAll('input[type ="radio"]');
+            radios.forEach(radio => {
+                radio.checked= false;
+            });
+            const notification = document.getElementById('notification');
+            notification.textContent = '';
+        }
     </script>
 </body>
 </html>
