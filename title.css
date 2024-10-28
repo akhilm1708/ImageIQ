@@ -11,15 +11,30 @@ body {
     padding: 20px;
     text-align: center;
     background-image: url('images/cool.gif');
+    background-position-x: -95px;
     background-size: cover;
 }
 
+.header-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;            
+}
+
 h1 {
-    font-size: 100px;
+    font-size: 120px;
     background: linear-gradient(90deg, #4A90E2, #9B59B6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 20px;
+    margin: 0; 
+    margin-top: 300px; 
+}
+
+.computer-image {
+    width: 100px;
+    height: auto;
+    margin-left: 20px;     
+    margin-top: 275px; 
 }
 
 p {
@@ -27,6 +42,8 @@ p {
     line-height: 1.5;
     margin: 10px 0;
     max-width: 600px;
+    margin-bottom: 30px;
+    margin-top: 30px; 
     color: aliceblue;
 }
 
@@ -44,4 +61,22 @@ button {
 
 button:hover {
     background-color: #357ABD;
+}
+
+.centered-image {
+    display: block;
+    margin: 0 auto;
+    width: 20%; 
+    max-width: 600px; 
+    height: 30%; 
+}
+
+.content-box {
+    background-color: black;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+    margin-top: 30px; 
+    margin-bottom: -100px;
 }
