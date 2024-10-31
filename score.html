@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Score</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="score.css">
+    <link rel="stylesheet" href="/.vscode/css/score.css">
 </head>
 <body>
     <div id="result"></div>
@@ -19,28 +19,30 @@
             const resultDiv = document.getElementById('result');
             let message = '';
             let encouragement = '';
+            let textGradient = '';
 
-            if (score>= 1 && score <= 2) {
+            if (score >= 1 && score <= 2) {
                 message = 'Novice';
                 encouragement = 'Keep practicing! You’re on the right track!';
-                resultDiv.style.background = 'linear-gradient(to right, orange, yellow)';
-            } else if (score >= 3 && score<= 4) {
+                textGradient = 'linear-gradient(to right, orange, yellow)';
+                resultDiv.style.background = textGradient;
+            } else if (score >= 3 && score <= 4) {
                 message = 'Sleuth';
                 encouragement = 'Great job! You’re getting really good at this!';
-                resultDiv.style.background = 'linear-gradient(to right, yellow, orange)';
+                textGradient = 'linear-gradient(to right, blue, cyan)';
+                resultDiv.style.background = textGradient;
             } else if (score === 5) {
                 message = 'Master';
                 encouragement = 'Amazing! You are a true master!';
-                resultDiv.style.background = 'linear-gradient(to right, lightgreen, green)';
+                textGradient = 'linear-gradient(to right, lightgreen, green)';
+                resultDiv.style.background = textGradient;
             }
-            resultDiv.innerHTML = `<h1>${message}</h1><h2>Your Score: ${score}/5</h2><p>${encouragement}</p>`;
-            resultDiv.style.color = 'transparent';
-            resultDiv.style.backgroundClip = 'text';
-            resultDiv.style.webkitBackgroundClip = 'text';
+
+            resultDiv.innerHTML = `<h1 style="background: ${textGradient}; -webkit-background-clip: text; background-clip: text;">${message}</h1><h2>Your Score: ${score}/5</h2><p>${encouragement}</p>`;
         }
 
         const score = getScore();
-    displayResult(score);
+        displayResult(score);
     </script>
 </body>
 </html>
